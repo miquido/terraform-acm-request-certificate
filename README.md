@@ -91,13 +91,14 @@ Copyright © 2017-2019 [Miquido](https://miquido.com)
 
 ### Contributors
 
-|  [![Konrad Obal][k911_avatar]][k911_homepage]<br/>[Konrad Obal][k911_homepage] |
-|---|
+|  [![Konrad Obal][k911_avatar]][k911_homepage]<br/>[Konrad Obal][k911_homepage] | [![Maksymilian Lewicki][maksymilian_lewicki_avatar]][maksymilian_lewicki_homepage]<br/>[Maksymilian Lewicki][maksymilian_lewicki_homepage] |
+|---|---|
 
   [k911_homepage]: https://github.com/k911
   [k911_avatar]: https://github.com/k911.png?size=150
-
-
+  
+  [maksymilian_lewicki_homepage]: https://github.com/maksymilian-lewicki
+  [maksymilian_lewicki_avatar]: https://github.com/maksymilian-lewicki.png?size=150
 
   [logo]: https://www.miquido.com/img/logos/logo__miquido.svg
   [website]: https://www.miquido.com/

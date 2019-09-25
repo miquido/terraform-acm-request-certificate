@@ -11,7 +11,7 @@ resource "aws_acm_certificate" "default" {
 
 locals {
   process_domain_validation_options = var.process_domain_validation_options && var.validation_method == "DNS"
-  domain_validation_options_list    = local.process_domain_validation_options ? aws_acm_certificate.default.0.domain_validation_options : []
+  domain_validation_options_list    = local.process_domain_validation_options ? aws_acm_certificate.default.domain_validation_options : []
 }
 
 resource "aws_route53_record" "default" {
