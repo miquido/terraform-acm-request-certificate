@@ -29,6 +29,12 @@ usage: |-
   ```hcl
   module "acm_request_certificate" {
     source                            = "git::ssh://git@bitbucket.org/miquido/terraform-acm-request-certificate.git?ref=master"
+
+    providers = {
+      aws.acm = aws
+      aws.dns = aws
+    }
+
     domain_name                       = "example.com"
     process_domain_validation_options = true
     ttl                               = "300"
@@ -41,6 +47,12 @@ usage: |-
   ```hcl
   module "acm_request_certificate" {
     source                            = "git::ssh://git@bitbucket.org/miquido/terraform-acm-request-certificate.git?ref=master"
+
+    providers = {
+      aws.acm = aws
+      aws.dns = aws
+    }
+
     domain_name                       = "example.com"
     process_domain_validation_options = true
     ttl                               = "300"

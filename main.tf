@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "default" {
-  provider = "aws.acm"
+  provider = aws.acm
 
   domain_name               = var.domain_name
   validation_method         = var.validation_method
@@ -17,7 +17,7 @@ locals {
 }
 
 resource "aws_route53_record" "default" {
-  provider = "aws.dns"
+  provider = aws.dns
 
   count           = local.process_domain_validation_options ? length(var.subject_alternative_names) + 1 : 0
   zone_id         = var.hosted_zone_id
@@ -29,7 +29,7 @@ resource "aws_route53_record" "default" {
 }
 
 resource "aws_acm_certificate_validation" "default" {
-  provider = "aws.acm"
+  provider = aws.acm
 
   count                   = local.process_domain_validation_options && var.wait_for_certificate_issued ? 1 : 0
   certificate_arn         = aws_acm_certificate.default.arn

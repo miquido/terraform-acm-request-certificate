@@ -14,6 +14,12 @@ This example will request an SSL certificate for `example.com` domain
 ```hcl
 module "acm_request_certificate" {
   source                            = "git::ssh://git@bitbucket.org/miquido/terraform-acm-request-certificate.git?ref=master"
+
+  providers = {
+    aws.acm = aws
+    aws.dns = aws
+  }
+
   domain_name                       = "example.com"
   process_domain_validation_options = true
   ttl                               = "300"
@@ -26,6 +32,12 @@ This example will request an SSL certificate for `example.com` domain and all it
 ```hcl
 module "acm_request_certificate" {
   source                            = "git::ssh://git@bitbucket.org/miquido/terraform-acm-request-certificate.git?ref=master"
+
+  providers = {
+    aws.acm = aws
+    aws.dns = aws
+  }
+
   domain_name                       = "example.com"
   process_domain_validation_options = true
   ttl                               = "300"
@@ -40,7 +52,7 @@ Available targets:
   help                                Help screen
   help/all                            Display help for all targets
   help/short                          This help short screen
-  lint                                Lint terraform code
+  lint                                Lint Terraform code
 
 ```
 ## Inputs
@@ -48,7 +60,6 @@ Available targets:
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | domain_name | A domain name for which the certificate should be issued | string | - | yes |
-| enabled | Set to false to prevent the module from creating or accessing any resources | bool | `true` | no |
 | hosted_zone_id | The ID of the hosted zone to contain validation records. | string | `` | no |
 | process_domain_validation_options | Flag to enable/disable processing of the record to add to the DNS zone to complete certificate validation | bool | `true` | no |
 | subject_alternative_names | A list of domains that should be SANs in the issued certificate | list(string) | `<list>` | no |
@@ -91,14 +102,15 @@ Copyright © 2017-2019 [Miquido](https://miquido.com)
 
 ### Contributors
 
-|  [![Konrad Obal][k911_avatar]][k911_homepage]<br/>[Konrad Obal][k911_homepage] | [![Maksymilian Lewicki][maksymilian_lewicki_avatar]][maksymilian_lewicki_homepage]<br/>[Maksymilian Lewicki][maksymilian_lewicki_homepage] |
+|  [![Konrad Obal][k911_avatar]][k911_homepage]<br/>[Konrad Obal][k911_homepage] | [![Maksymilian Lewicki][maksymilian-lewicki_avatar]][maksymilian-lewicki_homepage]<br/>[Maksymilian Lewicki][maksymilian-lewicki_homepage] |
 |---|---|
 
   [k911_homepage]: https://github.com/k911
   [k911_avatar]: https://github.com/k911.png?size=150
-  
-  [maksymilian_lewicki_homepage]: https://github.com/maksymilian-lewicki
-  [maksymilian_lewicki_avatar]: https://github.com/maksymilian-lewicki.png?size=150
+  [maksymilian-lewicki_homepage]: https://github.com/maksymilian-lewicki
+  [maksymilian-lewicki_avatar]: https://github.com/maksymilian-lewicki.png?size=150
+
+
 
   [logo]: https://www.miquido.com/img/logos/logo__miquido.svg
   [website]: https://www.miquido.com/
