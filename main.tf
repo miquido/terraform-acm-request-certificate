@@ -1,6 +1,7 @@
 resource "aws_acm_certificate" "default" {
   provider = aws.acm
 
+  count                     = local.enabled ? 1 : 0
   domain_name               = var.domain_name
   validation_method         = var.validation_method
   subject_alternative_names = var.subject_alternative_names
@@ -12,8 +13,9 @@ resource "aws_acm_certificate" "default" {
 }
 
 locals {
+  enabled                           = true
   process_domain_validation_options = var.process_domain_validation_options && var.validation_method == "DNS"
-  domain_validation_options_list    = local.process_domain_validation_options ? aws_acm_certificate.default.domain_validation_options : []
+  domain_validation_options_list    = local.process_domain_validation_options ? tolist(aws_acm_certificate.default.0.domain_validation_options) : []
 }
 
 resource "aws_route53_record" "default" {
@@ -32,6 +34,6 @@ resource "aws_acm_certificate_validation" "default" {
   provider = aws.acm
 
   count                   = local.process_domain_validation_options && var.wait_for_certificate_issued ? 1 : 0
-  certificate_arn         = aws_acm_certificate.default.arn
+  certificate_arn         = join("", aws_acm_certificate.default.*.arn)
   validation_record_fqdns = aws_route53_record.default.*.fqdn
 }
