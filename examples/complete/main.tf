@@ -9,4 +9,5 @@ module "acm_request_certificate" {
   ttl                               = "300"
   hosted_zone_id                    = "xxxxx"
   acm_region                        = "eu-east-1"
+  aws_region                        = "eu-east-1"
 }

@@ -5,6 +5,7 @@ provider "aws" {
 
 provider "aws" {
   alias                   = "dns"
+  region                  = var.aws_region
 
   dynamic "assume_role" {
     for_each = var.dns_aws_assume_role_arn != "" ? ["true"] : []

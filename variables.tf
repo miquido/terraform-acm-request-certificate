@@ -45,6 +45,11 @@ variable "hosted_zone_id" {
   description = "The ID of the hosted zone to contain validation records."
 }
 
+variable "aws_region" {
+  type = string
+  description = "region of provider"
+}
+
 variable "acm_region" {
   type = string
   description = "region of acm provider"
