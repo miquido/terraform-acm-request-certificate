@@ -44,3 +44,14 @@ variable "hosted_zone_id" {
   default     = ""
   description = "The ID of the hosted zone to contain validation records."
 }
+
+variable "acm_region" {
+  type = string
+  description = "region of acm provider"
+}
+
+variable "dns_aws_assume_role_arn" {
+  type = string
+  default = ""
+  description = "role of dns provider"
+}
