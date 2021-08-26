@@ -4,6 +4,7 @@ terraform {
     aws = {
       source                = "hashicorp/aws"
       version               = ">= 2.0"
+//      configuration_aliases = [aws.acm, aws.dns]
     }
     local = {
       source  = "hashicorp/local"
