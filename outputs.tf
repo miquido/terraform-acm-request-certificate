@@ -6,6 +6,7 @@ output "id" {
 output "arn" {
   value       = join("", aws_acm_certificate.default.*.arn)
   description = "The ARN of the certificate"
+  depends_on  = [time_sleep.wait_for_cert]
 }
 
 output "domain_validation_options" {

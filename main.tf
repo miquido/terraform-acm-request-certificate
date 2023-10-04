@@ -37,3 +37,8 @@ resource "aws_acm_certificate_validation" "default" {
   certificate_arn         = join("", aws_acm_certificate.default.*.arn)
   validation_record_fqdns = aws_route53_record.default.*.fqdn
 }
+
+resource "time_sleep" "wait_for_cert" {
+  depends_on = [aws_acm_certificate_validation.default[0]]
+  create_duration = "30s"
+}
