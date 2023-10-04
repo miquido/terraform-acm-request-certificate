@@ -39,6 +39,6 @@ resource "aws_acm_certificate_validation" "default" {
 }
 
 resource "time_sleep" "wait_for_cert" {
-  depends_on = [aws_acm_certificate_validation.default[0]]
+  depends_on      = [aws_acm_certificate_validation.default[0]]
   create_duration = "30s"
 }
